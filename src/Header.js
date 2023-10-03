@@ -33,6 +33,7 @@ function Header() {
                         <strong>Letter -</strong> What column the bin for the fitting is on.<br/>
                         <strong>2nd Number -</strong> What row the bin for the fitting is on.<br/>
                     </p>
+                    <br/>
                     <a className="helpLink" href="youtube.com">Click here for a visual aid.</a>
                 </div>
                 <div className="helpInformationDiv">
