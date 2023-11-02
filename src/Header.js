@@ -62,9 +62,17 @@ function Header() {
                     <p className="helpInformation" style={{marginBottom: "0rem",}}>
                         -   Needles Valves, Drain Cocks, Saddle Valves, and Ground Plugs were not included in this index.
                     </p>
+                    <p className="qRCodeLink">
+                        Hover for QR Code for phone access.
+                    </p>
                     <h3 className='helpInformation developedBy'>
                         Developed by <a className='developedByLink' href='https://www.linkedin.com/in/victor-alvarez-780441274/'>Victor Alvarez</a>.
                     </h3>
+                    <div className='qRCodeFlexContainer'>
+                        <div className='qRCodeDiv'>
+                            <img src="images/Qr Code.png" className='qRCodeImage'/>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="helpPageBlock">
