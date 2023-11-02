@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ace-page/static/css/main.9d696b31.css",
+    "main.js": "/ace-page/static/js/main.db5d2237.js",
+    "static/js/787.cde99bf6.chunk.js": "/ace-page/static/js/787.cde99bf6.chunk.js",
+    "static/media/6 Semibold.otf": "/ace-page/static/media/6 Semibold.e16deadd9dc50f769f31.otf",
+    "static/media/5 Medium.otf": "/ace-page/static/media/5 Medium.eec811a8c90a516708ea.otf",
+    "static/media/8 Heavy.otf": "/ace-page/static/media/8 Heavy.4f6b327cac5ca4071e79.otf",
+    "static/media/7 Bold.otf": "/ace-page/static/media/7 Bold.f321f7b8a04248a4394c.otf",
+    "static/media/3 Light.otf": "/ace-page/static/media/3 Light.9f516e09570f34609f07.otf",
+    "static/media/1 Ultralight.otf": "/ace-page/static/media/1 Ultralight.3f9d83a1c235642a5a68.otf",
+    "static/media/2 Thin.otf": "/ace-page/static/media/2 Thin.e152bbce1f8c93322e6b.otf",
+    "static/media/4 Regular.otf": "/ace-page/static/media/4 Regular.ba21d41dbb34b2e04643.otf",
+    "static/media/9 Black.otf": "/ace-page/static/media/9 Black.a07bf2613e10747196f9.otf",
+    "static/media/logo.svg": "/ace-page/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/ace-page/index.html",
+    "main.9d696b31.css.map": "/ace-page/static/css/main.9d696b31.css.map",
+    "main.db5d2237.js.map": "/ace-page/static/js/main.db5d2237.js.map",
+    "787.cde99bf6.chunk.js.map": "/ace-page/static/js/787.cde99bf6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d696b31.css",
+    "static/js/main.db5d2237.js"
+  ]
+}
