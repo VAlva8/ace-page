@@ -1,22 +1,54 @@
 .userInput{
     display:flex;
     flex-direction: column;
-    margin: 1.5rem 0;
+}
+
+.userInputInstructionText{
+    margin:1.5rem;
 }
 
 .userInputInstruction{
-    font-family:'Regular';
+    font-family:'Bold';
     font-size: 1.75rem;
-    margin: 0 1.5rem 1.5rem;
+    margin: 0;
     color: #1d1b16;
 }
 
-.userInputOptionDiv{
+.userInputInstructionDisclaimer{
+    font-family: "Regular";
+    font-size: 1.1rem;
+    margin:0.5rem 0;
+}
+
+/* .userInputOptionDiv{
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
     padding: 0 1.5rem;
+    flex-wrap: wrap;
+} */
+
+.userInputOptionDiv{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 1.5rem;
+    grid-auto-rows: 1fr;
+    padding: 0 1.5rem;
 }
+
+/* .userInputOption{
+    height: fit-content;
+    background-color: white;
+    border-radius: 0.5rem;
+    color: black;
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
+    transition: ease 0.25s;
+    flex-basis: calc(100%/9);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+} */
 
 .userInputOption{
     height: fit-content;
@@ -24,25 +56,22 @@
     border-radius: 0.5rem;
     color: black;
     box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
-    flex-basis: 0;
-    flex-grow: 1;
     transition: ease 0.25s;
-    border: 0.075rem solid rgba(0,0,0,0.05);
-    display: flex;
     flex-direction: column;
     overflow: hidden;
+    display:flex;
+    justify-content: center;
+    height: 100%;
 }
 
 .userInputOption:hover{
     transition: ease 0.25s;
     box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.10);
-    /* background-color: rgba(0,0,0,0.15); */
     cursor: pointer;
-
 }
 
 .userInputOptionText{
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-family: 'Bold';
     text-align: center;
     margin: 0.5rem;
@@ -50,6 +79,7 @@
 
 .userInputOptionInformation{
     font-family: "Regular";
+    font-size: 0.9rem;
     text-align: center;
     margin:0.25rem;
 }
@@ -66,4 +96,257 @@
     height: 100%;
     align-self: center;
     object-fit: contain;
+}
+
+#userInput2{
+    display: none;
+}
+
+#userInput3{
+    display: none;
+}
+
+#userInput4{
+    display: none;
+}
+
+#resultsContainerID{
+    display: none;
+}
+
+.selected{
+    opacity: 100%;
+    background-image: linear-gradient(#3f3f3f, #080808);
+    color: white;
+}
+
+.submitButtonDiv{
+    display:none;
+    justify-content: center;
+}
+
+.refreshButtonDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.finalButton{
+    height:4rem;
+    width: 8rem;
+    border: 0;
+    background-image:  linear-gradient(#e73137, #bf171c);
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
+    border-radius: 0.5rem;
+    color:white;
+    font-family:'Bold';
+    font-size: 1.5rem;
+    margin:1.5rem 0 1rem;
+}
+
+.finalButton:hover{
+    transition: ease 0.25s;
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.10);
+    cursor: pointer;
+}
+
+/* .notSelected{
+    opacity:50%;
+    user-select:none;
+    background-color:white;
+    color:black;
+}
+
+.notSelected:hover{
+    opacity: 70%;
+} */
+
+.resultsContainer{
+    display: flex;
+    padding: 0 1.5rem;
+    font-family: 'Regular';
+    margin:1.5rem;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.resultsDiv{
+    height: fit-content;
+    background-color: white;
+    border-radius: 0.5rem;
+    color: black;
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
+    transition: ease 0.25s;
+    flex-direction: column;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+    height: 100%;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.resultsHeading{
+    font-family: 'Heavy';
+    font-size:1.75rem;
+    text-align: center;
+    margin:0;
+}
+
+.resultsInformation{
+    font-size: 1.5rem;
+    text-align: center;
+    margin:0;
+}
+
+.resultsStrong{
+    font-family:'Bold'
+}
+
+.notStrong{
+    font-family: 'Regular';
+}
+
+.hiddenButton{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 100%;
+    opacity: 0%;
+    transition: ease 0.75s;
+}
+
+.hiddenButton:hover{
+    opacity: 100%;
+    cursor: pointer;
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
+}
+
+.easterEggDiv{
+    display:none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.easterEggTitle{
+    font-family: 'Heavy';
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.easterEggSubtitle{
+    font-family: regular;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.easterEggInstructions{
+    font-family: regular;
+    font-size: 1.5rem;
+    margin: 2rem;
+    text-align: center;
+}
+
+.riddleContainer{
+    height: fit-content;
+    background-color: white;
+    border-radius: 0.5rem;
+    color: black;
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
+    transition: ease 0.25s;
+    flex-direction: column;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+    width: max-content;
+    padding: 2rem;
+}
+
+.riddle{
+    font-family: 'Light';
+    font-size: 1.5rem;
+    margin:0.5rem;
+    text-align: center;
+}
+
+.riddleInputContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:0rem;
+    width:80%;
+}
+
+.riddleInput{
+    margin:2rem;
+    height: 2rem;
+    width: 50%;
+    font-family: 'Regular';
+    font-size: 1.5rem;
+}
+
+.riddleSubmitButton{
+    background-image:  linear-gradient(#e73137, #bf171c);
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
+    border-radius: 0.5rem;
+    color:white;
+    font-family:'Bold';
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border:0;
+}
+
+.riddleSubmitButton:hover{
+    transition: ease 0.25s;
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.10);
+    cursor: pointer;
+}
+@media (max-width:1400px) {
+    .userInputOptionInformation{
+        display: none;
+    }
+
+    .userInputOptionDiv{
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 1.5rem;
+        grid-auto-rows: 1fr;
+        padding: 0 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .userInputOptionText{
+        font-size:1.25rem;
+    }
+}
+
+@media (max-width:800px) {
+    .userInputOptionDiv{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width:600px) {
+    .userInputOptionDiv{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width:400px) {
+    .userInputOptionDiv{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:300px) {
+    .userInputOptionDiv{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .userInputOptionText{
+        font-size:1rem;
+    }
 }

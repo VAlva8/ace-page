@@ -13,6 +13,11 @@
     font-size: 1.75rem;
 }
 
+.helpAndExit{
+    display: flex;
+    justify-content:center;
+}
+
 .help{
     font-family: 'Light';
     opacity: 50%;
@@ -50,7 +55,7 @@
 #exitButton{
     position: absolute;
     right: 0;
-    align-self: center;
+    top:0;
     font-family: "Thin";
     margin: 1.5rem;
     opacity: 50%;
@@ -91,7 +96,13 @@
 
 .helpInformation{
     font-family: "Regular";
-    margin:0 1.5rem;
+    margin:0 1.5rem 0.25rem;
+}
+.helpDisclaimer{
+    text-align: center;
+    color: #bf171c;
+    justify-self: last baseline;
+    margin-bottom: 1rem;
 }
 
 .helpLink{
@@ -101,17 +112,81 @@
     color: black;
 }
 
-.hiddenButton{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 4rem;
-    width: 4rem;
-    background-color: white;
-    border-radius: 50%;
-    display: inline-block;
+.indent{
+    text-indent: 1rem;
 }
 
-.hiddenButton:hover{
-    cursor: pointer;
+.developedBy{
+    text-align: center;
+    font-family:'Bold';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom:2.5%;
+}
+
+.developedByLink{
+    text-decoration: none;
+    color: black;
+}
+
+@media (max-width:850px){
+
+    .pageTitle{
+        font-size: 1rem;
+    }
+
+    .help{
+        font-size: 1.25rem;
+        align-self: center;
+    }
+
+    .helpTitle{
+        font-size: 1.5rem;
+    }
+
+    .helpSubtitle{
+        text-align: center;
+    }
+    #exitButton{
+        font-size: 1.15rem;
+        margin:1.15rem;
+    }
+
+    .helpDisclaimer{
+        font-size: .8rem;
+    }
+
+    .helpPage{
+        overflow: scroll;
+    }
+
+    .developedBy{
+        position:inherit;
+    }
+
+    .indent{
+        text-indent: 0rem;
+    }
+
+    .helpInformationDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .helpInformation{
+        margin: 0.5rem 0;
+    }
+    .helpLink{
+        margin: 1rem 0;
+    }
+
+    .helpDisclaimer{
+        margin: 1rem 1.5rem;
+    }
+
+    #helpPageBlock{
+        position:fixed;
+    }
+
 }
