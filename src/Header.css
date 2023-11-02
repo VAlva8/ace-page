@@ -129,8 +129,54 @@
     text-decoration: none;
     color: black;
 }
+.qRCodeFlexContainer{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: min-content;
+    margin: 0 auto auto;
+	top: 7.5%;
+	right: 0;
+	bottom: 0;
+	left: 0;
+    justify-content: center;
+}
+
+.qRCodeDiv{
+    padding: 1.5rem;
+    background-color: white;
+    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.5);
+    border-radius: 2.5rem;
+    transition: 0.5s;
+}
+
+.qRCodeImage{
+    height: 300px;
+    width: 300px;
+}
+
+.qRCodeLink{
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 1.5rem;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.qRCodeLink:hover{
+    cursor: pointer;
+}
+
+.qRCodeLink:hover ~ .qRCodeFlexContainer{
+    display: flex;
+    transition: 0.5s;
+}
 
 @media (max-width:850px){
+    .qRCodeLink{
+        display: none;
+    }
 
     .pageTitle{
         font-size: 1rem;
