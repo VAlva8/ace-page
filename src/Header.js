@@ -40,7 +40,6 @@ function Header() {
                     <p className='helpInformation indent'>
                             <strong>2nd Number -</strong> What row the bin for the fitting is on.
                     </p>
-                    <a className="helpLink" href="youtube.com">Click here for a visual aid.</a>
                 </div>
                 <div className="helpInformationDiv">
                     <h3 className="helpSubtitle">
