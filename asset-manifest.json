@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ace-page/static/css/main.751db395.css",
-    "main.js": "/ace-page/static/js/main.c5f0078b.js",
+    "main.js": "/ace-page/static/js/main.80d6a5f6.js",
     "static/js/787.cde99bf6.chunk.js": "/ace-page/static/js/787.cde99bf6.chunk.js",
     "static/media/6 Semibold.otf": "/ace-page/static/media/6 Semibold.e16deadd9dc50f769f31.otf",
     "static/media/5 Medium.otf": "/ace-page/static/media/5 Medium.eec811a8c90a516708ea.otf",
@@ -15,11 +15,11 @@
     "static/media/logo.svg": "/ace-page/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/ace-page/index.html",
     "main.751db395.css.map": "/ace-page/static/css/main.751db395.css.map",
-    "main.c5f0078b.js.map": "/ace-page/static/js/main.c5f0078b.js.map",
+    "main.80d6a5f6.js.map": "/ace-page/static/js/main.80d6a5f6.js.map",
     "787.cde99bf6.chunk.js.map": "/ace-page/static/js/787.cde99bf6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.751db395.css",
-    "static/js/main.c5f0078b.js"
+    "static/js/main.80d6a5f6.js"
   ]
 }
