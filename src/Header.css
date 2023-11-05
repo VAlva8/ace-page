@@ -36,7 +36,7 @@
     display:none;
     flex-direction: column;
     width: 80%;
-    height: 80%;
+    height: max-content;
     background-color: white;
     margin: auto;
 	top: 0;
@@ -84,8 +84,19 @@
     z-index: 3;
 }
 
+.coordinateSystemImageContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.coordinateSystemImage{
+    height: 12.5rem;
+}
+
 .helpInformationDiv{
     margin:0 2rem;
+    height: min-content;
 }
 
 .helpSubtitle{
@@ -119,10 +130,12 @@
 .developedBy{
     text-align: center;
     font-family:'Bold';
-    position: absolute;
+    /* position: absolute;
     left: 0;
     right: 0;
-    bottom:2.5%;
+    bottom:2.5%; */
+
+    margin-bottom: 1rem;
 }
 
 .developedByLink{
@@ -204,6 +217,7 @@
     }
 
     .helpPage{
+        height: 90%;
         overflow: scroll;
     }
 

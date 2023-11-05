@@ -50,6 +50,7 @@ function FirstSelection(){
 
         document.getElementById('userInput2').style.display="flex";
 
+
         var selectTwo = document.getElementsByClassName('secondOptions');
         var selectThree = document.getElementsByClassName('thirdOptions');
         var selectFinal = document.getElementsByClassName('finalOptions');
@@ -132,10 +133,19 @@ function FirstSelection(){
         secondOptionsHolder.forEach(function (item) {
             setSecondOptionsArray((prev) => ([...prev, item]));
         })
+
+        var lastItemIndex = secondOptionsHolder.length - 1;
+
+        // console.log(lastItemIndex);
+
+        document.getElementById("instruction2").scrollIntoView({ behavior: "smooth", block: "end"});
+
     }
 
     function secondSelection(item, index){
         document.getElementById('userInput3').style.display="flex";
+        document.getElementById('instruction3').scrollIntoView({behavior:'smooth', block: 'end'});
+
         document.getElementById('userInput4').style.display="none";
         document.getElementById('submitButtonContainer').style.display="none";
 
@@ -218,9 +228,11 @@ function FirstSelection(){
                 if(item.secondSize){
                     finalOptionsSet.add(item.size2);
                     document.getElementById('userInput4').style.display="flex";
+                    document.getElementById('instruction4').scrollIntoView({behavior:'smooth', block: 'start'});
                 }else{
                     lastChoice=item.size1;
                     document.getElementById('submitButtonContainer').style.display="flex";
+                    document.getElementById('submitButtonContainer').scrollIntoView({behavior:'smooth', block: 'start'});
                     return;
                 }
             }
@@ -233,11 +245,12 @@ function FirstSelection(){
         finalOptionsHolder.forEach(function (item) {
             setFinalOptionsArray((prev) => ([...prev, item]));
         })
-        
+
     }
     
     function finalSelection(item, index){
         document.getElementById('submitButtonContainer').style.display="flex";
+        document.getElementById('submitButtonContainer').scrollIntoView({behavior:'smooth', block: 'end'});
         var greaterDiv = document.getElementsByClassName('finalOptions');
         
         for(var i=0; i<greaterDiv.length; i++){
@@ -256,6 +269,9 @@ function FirstSelection(){
     }
 
     function selectionMade(){
+
+        document.getElementById('searchFunctionContainer').style.display="none";
+
         for(var i=1; i<5; i++){
             document.getElementById('userInput' + i).style.display="none";
         }
@@ -279,6 +295,9 @@ function FirstSelection(){
 
     function easterEgg(){
         found=true;
+
+        document.getElementById('searchFunctionContainer').style.display="none";
+
         for(var i=1; i<5; i++){
             document.getElementById('userInput' + i).style.display="none";
         }
@@ -321,9 +340,75 @@ function FirstSelection(){
         console.log(wrongCount);
     }
 
+    function searchVerify(){
+        var input = document.getElementById('searchInput').value;
+        
+        // input = input.toLocaleLowerCase();
+        
+        for(var i=0; i<input.length; i++){
+            if(!isAlphaNumeric(input.charAt(i))){
+                document.getElementById('searchInput').value = "";
+                document.getElementById('searchInput').placeholder = "Use numbers only, try again.";
+                break;
+            }
+        }
+        
+        findSku(input);
+    }
+
+    function isAlphaNumeric(char){
+        return char==='0' || char==='1' || char==='2' || char==='3 '|| char==='4' || char==='5' || char==='6' || char==='7' || char==='8' || char==='9';  
+    }
+
+    function findSku(sku){
+        var skuFound = false;
+        var inputChange = parseInt(sku);
+
+        MasterData.forEach(function (item) {
+            if(item.SKU===inputChange){
+                skuFound = true;
+                setFinalFitting(item);
+            }
+        })
+
+        if(skuFound===true){
+            document.getElementById('searchFunctionContainer').style.display="none";
+
+            for(var i=1; i<5; i++){
+                document.getElementById('userInput' + i).style.display="none";
+            }
+
+            if(finalFitting.secondSize){
+                document.getElementById('size2Result').innerHTML=finalFitting.size2;
+            }
+    
+            document.getElementById('resultsContainerID').style.display="flex";
+        }else{
+            document.getElementById('searchInput').value = "";
+            document.getElementById('searchInput').placeholder = "That SKU was not found, try again.";
+
+        }
+    }
+
+    function enterPress(){
+        var input = document.getElementById("searchInput");
+        input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("searchSubmitButton").click();
+  }
+});
+    }
+
 
     return (
         <div id='firstSelectionComponentDiv'>
+            <div id='searchFunctionContainer'>
+                <div className='searchInputContainer'>
+                    <input className='searchInput' id='searchInput' type="tel" placeholder="Search by SKU..." maxLength={10} onKeyDown={enterPress}></input>
+                    <img className='searchButtonIcon' id='searchSubmitButton' onClick={searchVerify} src='images/Magnifying_Glass.svg'></img>
+                </div>
+            </div>
 
             <img className="hiddenButton" onClick={easterEgg} id='hiddenButton' src='images/moon.png'/>
 
@@ -393,14 +478,23 @@ function FirstSelection(){
             <div className='resultsContainer' id='resultsContainerID'>
                 <div className='resultsDiv'>
                     <p className='resultsHeading'>Your fitting</p>
-                    <p className='resultsInformation'><strong className='resultsStrong'>{finalFitting.type1}</strong> {(finalFitting.secondSize===true) && ("to") } <strong className='resultsStrong'>{finalFitting.type2}</strong></p>
+                    <p className='resultsInformation'><strong className='resultsStrong'>{finalFitting.type1}</strong> {(finalFitting.toAdd===true) && ("to") } <strong className='resultsStrong'>{finalFitting.type2}</strong></p>
                     <p className='resultsInformation'><strong className='resultsStrong'>{finalFitting.size1}</strong> {(finalFitting.secondSize===true) && ("to") } <strong className='resultsStrong' id="size2Result">{finalFitting.secondSize===true && finalFitting.size2}</strong></p>
+                    <div className='resultsSkuDiv'>
+                        <span className='resultsSkuBackground' style={{backgroundColor:finalFitting.color}}>
+                            <p className='resultsSku'>{finalFitting.SKU}</p>
+                        </span>
+                    </div>
                     <br/>
                     <p className='resultsHeading'>Is located at</p>
                     <p className='resultsInformation'><strong className='resultsStrong'>Wall</strong>: {finalFitting.wall},
                     <strong className='resultsStrong'> Column</strong>: {finalFitting.column},
                      and <strong className='resultsStrong'>Row</strong>: {finalFitting.row}</p>
+                     <a  className='productLink' target='_blank' href={'https://www.acehardware.com/search?query=' + finalFitting.SKU}>Check Ace's website for product availability.</a>
                 </div>
+                <a className='newFittingLink' href='http://valva8.github.io/ace-page/'>
+                    <span className='newFittingButton'>Search for New Fitting</span>
+                </a>
             </div>
 
             <div className='easterEggDiv' id='easterEggDiv'>
