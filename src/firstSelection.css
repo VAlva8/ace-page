@@ -1,3 +1,55 @@
+#firstSelectionComponentDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+#searchFunctionContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.searchInputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+    width:50%;
+    height: 2.5rem;
+    border-radius: 2rem;
+    border: solid #080808 0.1rem;
+    padding: 0 1rem;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.searchInput{
+    height: 100%;
+    width: 50%;
+    text-indent: 1.5%;
+    font-family: 'Regular';
+    font-size: 1.25rem;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    flex-grow: 1;
+    background-color: rgba(0,0,0,0);
+    outline: none;
+}
+
+.searchInput::after{
+    border: 0;
+}
+
+.searchButtonIcon{
+    height: 60%;
+    opacity: 35%;
+}
+
+.searchButtonIcon:hover{
+    cursor: pointer;
+}
+
 .userInput{
     display:flex;
     flex-direction: column;
@@ -162,10 +214,12 @@
 
 .resultsContainer{
     display: flex;
+    flex-direction: column;
     padding: 0 1.5rem;
     font-family: 'Regular';
     margin:1.5rem;
     justify-content: center;
+    align-items: center ;
     gap: 1.5rem;
 }
 
@@ -202,6 +256,51 @@
     font-family:'Bold'
 }
 
+.resultsSkuDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.resultsSkuBackground{
+    width:min-content;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.75rem;
+
+}
+
+.resultsSku{
+    font-size: 1.75rem;
+    font-family: 'Bold';
+    color: white;
+    margin: 0.75rem;
+}
+
+.productLink{
+    font-family: 'Regular';
+    text-decoration: none;
+    text-align: center;
+}
+
+.productLink:hover{
+    color: #bf171c;
+}
+
+.newFittingButton{
+    background-image:  linear-gradient(#e73137, #bf171c);
+    width: max-content;
+    padding: 1rem;
+    border-radius: 0.55rem;
+    font-size: 1.25rem;
+}
+
+.newFittingLink{
+    text-decoration: none;
+    font-family: 'Bold';
+    color: white;
+    margin: 0.5rem;
+}
 .notStrong{
     font-family: 'Regular';
 }
@@ -321,11 +420,20 @@
     .userInputOptionText{
         font-size:1.25rem;
     }
+
+    .hiddenButton{
+        display: none;
+    }
 }
 
 @media (max-width:800px) {
     .userInputOptionDiv{
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .searchInputContainer{
+        width:70%;
+
     }
 }
 

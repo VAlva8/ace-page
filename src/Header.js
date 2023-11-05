@@ -22,7 +22,7 @@ function Header() {
                         <h2 id="exitButton" onClick={closeHelp}>Exit</h2>
                     </div>
                     <h3 className='helpInformation helpDisclaimer'>
-                    Please note, the index leads you to where the fitting SHOULD be. This won't account for the misplacement of the fitting.
+                    Please note, the index leads you to where the fitting SHOULD be. This won't account for the misplacement of the fitting nor its inventory availability.
                     </h3>
                 <div className="helpInformationDiv">
                     <h3 className="helpSubtitle" style={{marginTop: 0,}}>
@@ -40,6 +40,9 @@ function Header() {
                     <p className='helpInformation indent'>
                             <strong>2nd Number -</strong> What row the bin for the fitting is on.
                     </p>
+                    <div className='coordinateSystemImageContainer'>
+                        <img className='coordinateSystemImage' src='images/Drawer_Coordinate.svg'/>
+                    </div>
                 </div>
                 <div className="helpInformationDiv">
                     <h3 className="helpSubtitle">
@@ -54,9 +57,6 @@ function Header() {
                     </p>
                     <p className='helpInformation'>
                         -   If unfamiliar with the acronyms, hover over the first options for the full name.
-                    </p>
-                    <p className='helpInformation'>
-                        -   To reset the page to find a a new fitting, simply refresh the page.
                     </p>
                     <p className="helpInformation" style={{marginBottom: "0rem",}}>
                         -   Needles Valves, Drain Cocks, Saddle Valves, and Ground Plugs were not included in this index.
