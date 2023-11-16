@@ -37,13 +37,13 @@ function FirstSelection(){
     const [finalOptionsArray, setFinalOptionsArray] = useState([]);
 
     const firstChoiceInfo = [
-        {title: 'FIP', use: 'Water and Natural Gas', image: 'images/FIP.png', option:1, alt: 'Female Iron Pipe',},
-        {title: 'MIP', use: 'Water and Natural Gas', image: 'images/MIP.png', option:2, alt: 'Male Iron Pipe',},
+        {title: 'FIP', use: 'Water & Natural Gas', image: 'images/FIP.png', option:1, alt: 'Female Iron Pipe',},
+        {title: 'MIP', use: 'Water & Natural Gas', image: 'images/MIP.png', option:2, alt: 'Male Iron Pipe',},
         {title: 'Compression', use: 'Water', image: 'images/Compression.png', option:3, alt: 'Compression',},
         {title: 'Flare', use: 'Natural Gas', image: 'images/Flare.png', option:4, alt: 'Flare',},
-        {title: 'Hose Barb', use: 'Coupling and Adapters', image: 'images/Hose_Barb.png', option:5, alt: 'Hose Barb',},
-        {title: 'FHT', use: 'Repairs and Adapters', image: 'images/Female_Garden_Hose.png', option:6, alt: 'Female Garden Hose Thread',},
-        {title: 'MHT', use: 'Repairs and Adapters', image: 'images/Male_Garden_Hose.png', option:7, alt: 'Male Garden Hose Thread',}
+        {title: 'Hose Barb', use: 'Coupling & Adapters', image: 'images/Hose_Barb.png', option:5, alt: 'Hose Barb',},
+        {title: 'FHT', use: 'Repairs & Adapters', image: 'images/Female_Garden_Hose.png', option:6, alt: 'Female Garden Hose Thread',},
+        {title: 'MHT', use: 'Repairs & Adapters', image: 'images/Male_Garden_Hose.png', option:7, alt: 'Male Garden Hose Thread',}
     ]
 
     function makeSelection(choice){
@@ -81,9 +81,7 @@ function FirstSelection(){
         for(var i = 0, length = pictures.length; i < length; i++) {
              var selected = greaterDiv[i].id;
 
-             pictures[i].style.display="none";
-
-             information[i].style.display="none";
+            //  information[i].style.display="none";
             
             var currentElement=document.getElementById(selected);
     
@@ -134,17 +132,13 @@ function FirstSelection(){
             setSecondOptionsArray((prev) => ([...prev, item]));
         })
 
-        var lastItemIndex = secondOptionsHolder.length - 1;
-
-        // console.log(lastItemIndex);
-
-        document.getElementById("instruction2").scrollIntoView({ behavior: "smooth", block: "end"});
+        document.getElementById("spacer").scrollIntoView({ behavior: "smooth", block: "end"});
 
     }
 
     function secondSelection(item, index){
         document.getElementById('userInput3').style.display="flex";
-        document.getElementById('instruction3').scrollIntoView({behavior:'smooth', block: 'end'});
+        document.getElementById('spacer').scrollIntoView({behavior:'smooth', block: 'end'});
 
         document.getElementById('userInput4').style.display="none";
         document.getElementById('submitButtonContainer').style.display="none";
@@ -228,7 +222,7 @@ function FirstSelection(){
                 if(item.secondSize){
                     finalOptionsSet.add(item.size2);
                     document.getElementById('userInput4').style.display="flex";
-                    document.getElementById('instruction4').scrollIntoView({behavior:'smooth', block: 'start'});
+                    document.getElementById('spacer').scrollIntoView({behavior:'smooth', block: 'start'});
                 }else{
                     lastChoice=item.size1;
                     document.getElementById('submitButtonContainer').style.display="flex";
@@ -290,6 +284,7 @@ function FirstSelection(){
             document.getElementById('size2Result').innerHTML=finalFitting.size2;
         }
 
+        document.getElementById('spacer').style.display="none";
         document.getElementById('resultsContainerID').style.display="flex";
     }
 
@@ -324,17 +319,33 @@ function FirstSelection(){
         if(input==="hint"){
             document.getElementById('easterEggInstruction').style.color="black";
             document.getElementById('easterEggInstruction').innerHTML="Everything (regarding percents).";
+            document.getElementById('riddleInput').value = "";
         }else if(input==="nvctis"){
             document.getElementById('easterEggInstruction').style.color="black";
             document.getElementById('easterEggInstruction').innerHTML="You're dope for knowing that. Here's another hint: cm to m.";
+            document.getElementById('riddleInput').value = "";
         }else if(input!="100" && wrongCount<4){
             document.getElementById('easterEggInstruction').innerHTML="Oops! That's not the right answer, try again.";
+            document.getElementById('riddleInput').value = "";
             wrongCount++;
         }else if(input!="100" && wrongCount>=4 && wrongCount<9){
             document.getElementById('easterEggInstruction').innerHTML="Bro, c'mon. For real?";            
+            document.getElementById('riddleInput').value = "";
             wrongCount++;
         }else if(input!="100" && wrongCount>=9){
             document.getElementById('easterEggInstruction').innerHTML="Damn. You're trash. Keep trying I guess.";           
+            document.getElementById('riddleInput').value = "";
+        }else if(input==="100"){
+            document.getElementById('easterEggInstruction').innerHTML="You got it!";
+
+            var riddles = document.getElementsByClassName('riddle');
+
+            for(var i=0; i<riddles.length; i++){
+                riddles[i].style.display="none";
+            }
+
+            document.getElementById("riddleImage").style.display="block";
+            document.getElementById("riddleFinalMessage").style.display="flex";
         }
 
         console.log(wrongCount);
@@ -342,8 +353,6 @@ function FirstSelection(){
 
     function searchVerify(){
         var input = document.getElementById('searchInput').value;
-        
-        // input = input.toLocaleLowerCase();
         
         for(var i=0; i<input.length; i++){
             if(!isAlphaNumeric(input.charAt(i))){
@@ -385,7 +394,7 @@ function FirstSelection(){
             document.getElementById('resultsContainerID').style.display="flex";
         }else{
             document.getElementById('searchInput').value = "";
-            document.getElementById('searchInput').placeholder = "That SKU was not found, try again.";
+            document.getElementById('searchInput').placeholder = "That SKU was not found.";
 
         }
     }
@@ -396,6 +405,16 @@ function FirstSelection(){
         if (event.key === "Enter") {
             event.preventDefault();
             document.getElementById("searchSubmitButton").click();
+  }
+});
+    }
+
+    function riddleEnterPress(){
+        var input = document.getElementById("riddleInput");
+        input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("riddleSubmitButton").click();
   }
 });
     }
@@ -475,6 +494,10 @@ function FirstSelection(){
                 </button>
             </div>
 
+            <div className='spacer' id='spacer'>
+                Test
+            </div>
+
             <div className='resultsContainer' id='resultsContainerID'>
                 <div className='resultsDiv'>
                     <p className='resultsHeading'>Your fitting</p>
@@ -507,11 +530,13 @@ function FirstSelection(){
                     <p className='riddle'>I'm everything, not beyond it</p>
                     <p className='riddle'>And the largest, most frustrated bill</p>
                     <p className='riddle'>What am I?</p>
+                    <img id='riddleImage' src='images/Reward.jpg'/>
+                    <p className='riddle' id='riddleFinalMessage'>You solved the riddle! Send me a pic of this page for $10 reward!</p>
                 </div>
 
                 <div className='riddleInputContainer'>
-                    <input className='riddleInput' id='riddleInput' placeholder='Input your answer...' maxLength={35}></input>
-                    <button className='riddleSubmitButton' onClick={easterEggSubmit}>Submit Answer</button>
+                    <input className='riddleInput' id='riddleInput' placeholder='Input your answer...' maxLength={35} onKeyDown={riddleEnterPress}></input>
+                    <img src='images/Send.svg' className='riddleSubmitButton' id='riddleSubmitButton' onClick={easterEggSubmit}/>
                 </div>
             </div>
 

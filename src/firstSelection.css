@@ -1,3 +1,8 @@
+.spacer{
+    margin: .25rem;
+    color: rgba(0,0,0,0);
+}
+
 #firstSelectionComponentDiv{
     display: flex;
     flex-direction: column;
@@ -47,7 +52,9 @@
 }
 
 .searchButtonIcon:hover{
+    transition: 0.5s;
     cursor: pointer;
+    opacity: 75%;
 }
 
 .userInput{
@@ -61,7 +68,7 @@
 
 .userInputInstruction{
     font-family:'Bold';
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     margin: 0;
     color: #1d1b16;
 }
@@ -72,48 +79,26 @@
     margin:0.5rem 0;
 }
 
-/* .userInputOptionDiv{
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    padding: 0 1.5rem;
-    flex-wrap: wrap;
-} */
-
 .userInputOptionDiv{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-gap: 1.5rem;
+    gap: 1.5rem;
     grid-auto-rows: 1fr;
     padding: 0 1.5rem;
 }
 
-/* .userInputOption{
-    height: fit-content;
-    background-color: white;
-    border-radius: 0.5rem;
-    color: black;
-    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
-    transition: ease 0.25s;
-    flex-basis: calc(100%/9);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-} */
-
 .userInputOption{
-    height: fit-content;
+    height: 1fr;
+    padding: 0.5rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    transition: ease 0.25s;
     background-color: white;
     border-radius: 0.5rem;
     color: black;
     box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
-    transition: ease 0.25s;
-    flex-direction: column;
-    overflow: hidden;
-    display:flex;
-    justify-content: center;
-    height: 100%;
 }
 
 .userInputOption:hover{
@@ -123,7 +108,7 @@
 }
 
 .userInputOptionText{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-family: 'Bold';
     text-align: center;
     margin: 0.5rem;
@@ -133,7 +118,7 @@
     font-family: "Regular";
     font-size: 0.9rem;
     text-align: center;
-    margin:0.25rem;
+    margin:-0.25rem 0.25rem 0.5rem;
 }
 
 .optionImageContainer{
@@ -141,6 +126,7 @@
     justify-content: center;
     background-color: white;
     flex-grow: 1;
+    border-radius: 0.25rem;
 }
 
 .optionImage{
@@ -148,6 +134,8 @@
     height: 100%;
     align-self: center;
     object-fit: contain;
+    border-radius: 0.25rem;
+    user-select: none;
 }
 
 #userInput2{
@@ -167,8 +155,7 @@
 }
 
 .selected{
-    opacity: 100%;
-    background-image: linear-gradient(#3f3f3f, #080808);
+    background-image: linear-gradient(#1c1c1c, #080808);
     color: white;
 }
 
@@ -183,15 +170,14 @@
 }
 
 .finalButton{
-    height:4rem;
-    width: 8rem;
+    padding: 1rem 2rem;
     border: 0;
     background-image:  linear-gradient(#e73137, #bf171c);
     box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
     border-radius: 0.5rem;
     color:white;
     font-family:'Bold';
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin:1.5rem 0 1rem;
 }
 
@@ -200,17 +186,6 @@
     box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.10);
     cursor: pointer;
 }
-
-/* .notSelected{
-    opacity:50%;
-    user-select:none;
-    background-color:white;
-    color:black;
-}
-
-.notSelected:hover{
-    opacity: 70%;
-} */
 
 .resultsContainer{
     display: flex;
@@ -275,6 +250,7 @@
     font-family: 'Bold';
     color: white;
     margin: 0.75rem;
+    user-select: all;
 }
 
 .productLink{
@@ -373,36 +349,50 @@
 
 .riddleInputContainer{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap:0rem;
     width:80%;
+    height: 2.5rem;
+    border-radius: 2rem;
+    border: solid #080808 0.1rem;
+    padding: 0 1rem;
+    background-color: rgba(0,0,0,0.05);
+    width: 50%;
+    margin: 1.5rem;
 }
 
 .riddleInput{
-    margin:2rem;
-    height: 2rem;
-    width: 50%;
+    height: 100%;
+    font-size: 1.25rem;
+    text-indent: 1.5%;
     font-family: 'Regular';
-    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    flex-grow: 1;
+    background-color: rgba(0,0,0,0);
+    outline: none;
 }
 
 .riddleSubmitButton{
-    background-image:  linear-gradient(#e73137, #bf171c);
-    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.05);
-    border-radius: 0.5rem;
-    color:white;
-    font-family:'Bold';
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    border:0;
+    height: 60%;
+    opacity: 35%;
 }
 
 .riddleSubmitButton:hover{
-    transition: ease 0.25s;
-    box-shadow: 0 0 2rem 0.05rem rgba(0,0,0,0.10);
+    transition: ease 0.5s;
     cursor: pointer;
+    opacity: 75%;
+}
+
+#riddleImage{
+    display: none;
+    height: 500px;
+    object-fit: contain;
+}
+
+#riddleFinalMessage{
+    display: none;
 }
 @media (max-width:1400px) {
     .userInputOptionInformation{
@@ -417,9 +407,9 @@
         margin-bottom: 1.5rem;
     }
 
-    .userInputOptionText{
+    /* .userInputOptionText{
         font-size:1.25rem;
-    }
+    } */
 
     .hiddenButton{
         display: none;
@@ -431,9 +421,13 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .searchInputContainer{
-        width:70%;
+    .userInputInstructionText{
+        text-align: center;
+    }
 
+    .searchInputContainer{
+        width:100%;
+        margin: 0 1.5rem;
     }
 }
 
@@ -454,7 +448,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .userInputOptionText{
+    /* .userInputOptionText{
         font-size:1rem;
-    }
+    } */
 }
