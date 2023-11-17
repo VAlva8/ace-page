@@ -77,7 +77,7 @@ function Header() {
             <div id="helpPageBlock">
                 sample text
             </div>
-            <div className="header">
+            <div className="header" id='header'>
                 <h1 className="pageTitle">Ace Hardware of Kendall Inc's Brass Fitting Index</h1>
                 <h1 className="pageTitle help" onClick={helpPage}>Help</h1>
             </div>
