@@ -129,6 +129,22 @@
     border-radius: 0.25rem;
 }
 
+.secondOptionImageContainer{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    flex-grow: 1;
+    border-radius: 0.25rem;
+}
+
+.finalOptionImageContainer{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    flex-grow: 1;
+    border-radius: 0.25rem;
+}
+
 .optionImage{
     width: 100%;
     height: 100%;
@@ -192,7 +208,7 @@
     flex-direction: column;
     padding: 0 1.5rem;
     font-family: 'Regular';
-    margin:1.5rem;
+    margin:1rem;
     justify-content: center;
     align-items: center ;
     gap: 1.5rem;
@@ -229,6 +245,10 @@
 
 .resultsStrong{
     font-family:'Bold'
+}
+
+.resultsImage{
+    height: 12.5rem;
 }
 
 .resultsSkuDiv{

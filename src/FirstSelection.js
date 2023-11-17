@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './firstSelection.css';
 import MasterData from './MasterData';
+import Header from './Header';
 
 var firstChoice = "";
     
@@ -67,21 +68,16 @@ function FirstSelection(){
             selectFinal[i].className="userInputOption finalOptions";
         }
 
-
         document.getElementById('userInput3').style.display="none";
         document.getElementById('userInput4').style.display="none";
         document.getElementById('submitButtonContainer').style.display="none";
 
         var pictures = document.getElementsByClassName('optionImageContainer');
 
-        var information = document.getElementsByClassName('userInputOptionInformation');
-
         var greaterDiv = document.getElementsByClassName('userInputOption');
 
         for(var i = 0, length = pictures.length; i < length; i++) {
              var selected = greaterDiv[i].id;
-
-            //  information[i].style.display="none";
             
             var currentElement=document.getElementById(selected);
     
@@ -110,7 +106,6 @@ function FirstSelection(){
 
         makeSecondSelection();
 
-        console.log(firstChoice);
     }
 
     function makeSecondSelection(){
@@ -186,7 +181,6 @@ function FirstSelection(){
             setThirdOptionsArray((prev) => ([...prev, item]));
         })
 
-        console.log(firstChoice);
     }
 
     function thirdSelection(item, index){
@@ -278,14 +272,13 @@ function FirstSelection(){
             }
         });
 
-        console.log(finalFitting);
-
         if(finalFitting.secondSize){
             document.getElementById('size2Result').innerHTML=finalFitting.size2;
         }
 
         document.getElementById('spacer').style.display="none";
         document.getElementById('resultsContainerID').style.display="flex";
+        document.getElementById('header').scrollIntoView({behavior:'smooth', block: 'end'});
     }
 
     function easterEgg(){
@@ -347,8 +340,6 @@ function FirstSelection(){
             document.getElementById("riddleImage").style.display="block";
             document.getElementById("riddleFinalMessage").style.display="flex";
         }
-
-        console.log(wrongCount);
     }
 
     function searchVerify(){
@@ -376,6 +367,7 @@ function FirstSelection(){
         MasterData.forEach(function (item) {
             if(item.SKU===inputChange){
                 skuFound = true;
+                document.getElementById('spacer').style.display="none";
                 setFinalFitting(item);
             }
         })
@@ -419,6 +411,144 @@ function FirstSelection(){
 });
     }
 
+    function dynamicSize1Instruction(type1, type2){
+        var stringResult = "temp";
+
+        if(type2==="Cap"){
+            stringResult = "Choose the size of the cap:";
+            return stringResult;
+        }else if(type2==="Tee"){
+            stringResult = "Choose the size for all three sides of the tee:";
+            return stringResult;
+        }
+
+        if(type1==="FIP"){
+            if(type2==="Coupling"){
+                stringResult = "Choose the largest size of the coupling:";
+            }else if(type2==="Elbow"){
+                stringResult = "Choose the size for both sides of the elbow:";
+            }else if(type2==="MIP"){
+                stringResult = "Choose the size for the female side:"
+            }else if(type2==="Street Elbow"){
+                stringResult = "Choose the size for both the male and female side of the elbow:"
+            }
+        }else if(type1==="MIP"){
+            if(type2==="Ctr Sunk Plug" || type2==="HEX Head Plug" || type2==="SQR Head Plug"){
+                stringResult = "Choose the size of the plug:"
+            }else if(type2==="Face Bushing" || type2==="HEX Bushing"){
+                stringResult = "Choose the largest size of the bushing:"
+            }else{
+                stringResult = "Choose the diameter of the nipple:"
+            }
+        }else if(type1==="Compression"){
+            if(type2==="Compression"){
+                stringResult = "Choose the largest size of the fitting:"
+            }else if(type2==="Compression Elbow"){
+                stringResult = "Choose the size for both sides of the elbow:"
+            }else if(type2==="Delrin Sleeve" || type2==="Sleeve"){
+                stringResult = "Choose the size of the sleeve:";
+            }else if(type2==="FIP" || type2==="MIP" || type2==="MIP Elbow" || type2==="Sweat"){
+                stringResult = "Choose the size of the compression side:"
+            }else if(type2==="Insert"){
+                stringResult = "Choose the size of the insert:";
+            }else if(type2==="Nut"){
+                stringResult = "Choose the size of the nut:";
+            }
+        }else if(type1==="Flare"){
+            if(type2==="FIP" || type2==="FIP Elbow" || type2==="MIP" || type2==="MIP Elbow"){
+                stringResult = "Choose the size of the flare side:"
+            }else if(type2==="Flare"){
+                stringResult = "Choose the largest size of the fitting:"
+            }else if(type2==="Flare Elbow"){
+                stringResult = "Choose the size for both sides of the elbow:"
+            }else if(type2==="Forged Short Nut" || type2==="Short Nut"){
+                stringResult = "Choose the size of the nut:"
+            }else if(type2==="Plug"){
+                stringResult = "Choose the size of the plug:"
+            }else if(type2==="Swivel Union"){
+                stringResult = "Choose the largest size of the swivel union:";
+            }
+        }else if(type1==="Hose Barb"){
+            if(type2==="Coupling"){
+                stringResult = "Choose the size for both sides of the hose barb:";
+            }else if(type2==="FIP" || type2==="MIP" || type2==="MIP Elbow" || type2==="Swivel Adapter"){
+                stringResult = "Choose the size of the hose barb side:"
+            }
+        }else if(type1==="FHT"){
+            stringResult = "Choose the size of the female hose thread side:"
+        }else{
+            stringResult = "Choose the size of the male hose thread side:";
+        }
+
+        return stringResult;
+    }
+
+    function dynamicSize2Instruction(type1, type2){
+        var stringResult = "temp";
+
+        if(type1==="FIP"){
+            if(type2==="Coupling"){
+                stringResult = "Choose the other size of the coupling:";
+            }else if(type2==="MIP"){
+                stringResult = "Choose the size for the male side:"
+            }
+        }else if(type1==="MIP"){
+            if(type2==="Face Bushing" || type2==="HEX Bushing"){
+                stringResult = "Choose the size of the bushing you'll reduce to:"
+            }else if(type2==="Nipple"){
+                stringResult = "Choose the length of the nipple:"
+            }else{
+                stringResult = "Choose the diameter of the other side of the nipple:"
+            }
+        }else if(type1==="Compression"){
+            if(type2==="Compression"){
+                stringResult = "Choose the other size of the fitting:"
+            }else if(type2==="FIP"){
+                stringResult = "Choose the size of the FIP side of the fitting:"
+            }else if(type2==="MIP" || type2==="MIP Elbow"){
+                stringResult = "Choose the size of the MIP side of the fitting:";
+            }else if(type2==="Sweat"){
+                stringResult = "Choose the size of the sweat side of the fitting:";
+            }
+        }else if(type1==="Flare"){
+            if(type2==="FIP" || type2==="FIP Elbow"){
+                stringResult = "Choose the size of the FIP side of the fitting:"
+            }else if(type2==="Flare"){
+                stringResult = "Choose the other size of the fitting:"
+            }else if(type2==="MIP" || type2==="MIP Elbow"){
+                stringResult = "Choose the size of the MIP side of the fitting:"
+            }else if(type2==="Swivel Union"){
+                stringResult = "Choose the other size of the swivel union:";
+            }
+        }else if(type1==="Hose Barb"){
+            if(type2==="MIP" || type2==="MIP Elbow" ){
+                stringResult = "Choose the size for the MIP side of the fitting:";
+            }else if(type2==="FIP"){
+                stringResult = "Choose the size of the FIP side of the fitting:"
+            }else{
+                stringResult = "Choose the other size of the swivel adapter:"
+            }
+        }else if(type1==="FHT"){
+            if(type2==="FIP"){
+                stringResult = "Choose the size of the FIP side of the fitting:"
+            }else if(type2==="Ice Maker Elbow"){
+                stringResult = "Choose the size of the compression side of the fitting:"
+            }else if(type2==="MIP"){
+                stringResult = "Choose the size of the MIP side of the fitting:"
+            }else if(type2==="Swivel Adapter"){
+                stringResult = "Choose the other size of the swivel adapter:";
+            }
+        }else{
+            if(type2==="FIP"){
+                stringResult = "Choose the size of the FIP side of the fitting:"
+            }else{
+                stringResult = "Choose the size of the MIP side of the fitting:"
+            }
+        }
+
+        return stringResult;
+    }
+
 
     return (
         <div id='firstSelectionComponentDiv'>
@@ -433,7 +563,7 @@ function FirstSelection(){
 
             <div className="userInput" id='userInput1'>
                 <div className='userInputInstructionText'>
-                    <h1 className="userInputInstruction" id="instruction1">Choose the type for the fitting.</h1>
+                    <h1 className="userInputInstruction" id="instruction1">Choose the type for the fitting:</h1>
                 </div>
 
                 <div className="userInputOptionDiv">
@@ -442,7 +572,7 @@ function FirstSelection(){
                                     <h1 className="userInputOptionText">{firstChoiceInfo.title}</h1>
                                     <p className="userInputOptionInformation">{firstChoiceInfo.use}</p>
                                     <div className="optionImageContainer">
-                                        <img className="optionImage" src={firstChoiceInfo.image}/>
+                                        <img className="optionImage" draggable='false' src={firstChoiceInfo.image}/>
                                     </div>
                                 </div>})}
                 </div>
@@ -451,12 +581,15 @@ function FirstSelection(){
 
             <div className='userInput' id='userInput2'>
                 <div className='userInputInstructionText'>
-                    <h1 className="userInputInstruction" id="instruction2">Choose the other type for the fitting.</h1>
+                    <h1 className="userInputInstruction" id="instruction2">Choose the other type for the fitting:</h1>
                 </div>
                 <div className='userInputOptionDiv'>
                 {secondOptionsArray.map((item, index) => {
                         return<div className="userInputOption secondOptions" key={index} id={"secondSelection" + index} onClick={() => {secondSelection(item,index)}}>
                         <h1 className="userInputOptionText">{item}</h1>
+                        <div className="secondOptionImageContainer">
+                            <img className="optionImage" draggable='false' src={'images/' + firstChoice + '/' + item + '.jpg'}/>
+                        </div>
                         </div>
                     })}
                 </div>
@@ -464,7 +597,7 @@ function FirstSelection(){
 
             <div className='userInput' id='userInput3'>
                 <div className='userInputInstructionText'>
-                    <h1 className="userInputInstruction" id="instruction3">Choose the first size of fitting you're looking for.</h1>
+                    <h1 className="userInputInstruction" id="instruction3">{dynamicSize1Instruction(firstChoice,secondChoice)}</h1>
                 </div>
                 <div className='userInputOptionDiv'>
                 {thirdOptionsArray.map((item, index) => {
@@ -477,7 +610,7 @@ function FirstSelection(){
 
             <div className='userInput' id='userInput4'>
                 <div className='userInputInstructionText'>
-                    <h1 className="userInputInstruction" id="instruction4">Choose the other size of fitting you're looking for.</h1>
+                    <h1 className="userInputInstruction" id="instruction4">{dynamicSize2Instruction(firstChoice,secondChoice)}</h1>
                 </div>
                 <div className='userInputOptionDiv'>
                 {finalOptionsArray.map((item, index) => {
@@ -503,6 +636,9 @@ function FirstSelection(){
                     <p className='resultsHeading'>Your fitting</p>
                     <p className='resultsInformation'><strong className='resultsStrong'>{finalFitting.type1}</strong> {(finalFitting.toAdd===true) && ("to") } <strong className='resultsStrong'>{finalFitting.type2}</strong></p>
                     <p className='resultsInformation'><strong className='resultsStrong'>{finalFitting.size1}</strong> {(finalFitting.secondSize===true) && ("to") } <strong className='resultsStrong' id="size2Result">{finalFitting.secondSize===true && finalFitting.size2}</strong></p>
+                    <div className="finalOptionImageContainer">
+                        <img className="optionImage resultsImage" draggable='false' src={'images/' + finalFitting.type1 + '/' + finalFitting.type2 + '.jpg'}/>
+                    </div>
                     <div className='resultsSkuDiv'>
                         <span className='resultsSkuBackground' style={{backgroundColor:finalFitting.color}}>
                             <p className='resultsSku'>{finalFitting.SKU}</p>
