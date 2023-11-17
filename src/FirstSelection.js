@@ -368,6 +368,7 @@ function FirstSelection(){
             if(item.SKU===inputChange){
                 skuFound = true;
                 document.getElementById('spacer').style.display="none";
+                document.getElementById('submitButtonContainer').style.display="none";
                 setFinalFitting(item);
             }
         })
